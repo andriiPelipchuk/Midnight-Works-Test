@@ -33,6 +33,12 @@ namespace Assets.Scripts
                 Debug.Log("Save file deleted!");
             }
         }
+
+        public static bool PresenceSave()
+        {
+            if (File.Exists(_savePath)) return true;
+            else return false;
+        } 
     }
 
     [System.Serializable]
