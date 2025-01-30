@@ -24,6 +24,7 @@ namespace Assets.Scripts
         public void SetData(int lvl, bool isActive)
         {
             buildingLvl = lvl;
+            this.isActive = isActive;
             gameObject.SetActive(isActive);
         }
 

@@ -65,7 +65,7 @@ namespace Assets.Scripts
                 {
                     var buildingSave = buildingsSaveData[i];
                     var building = buildings.First(x => x.idBuilding == buildingSave.buildingID);
-                    building.SetData(buildingSave.buildingLvl, buildingSave.isActive);
+                    building.SetData(buildingSave.buildingLvl + 1, buildingSave.isActive);
                 }
                 money = data.money;
                 Debug.Log("Game Loaded!");

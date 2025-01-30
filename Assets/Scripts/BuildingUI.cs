@@ -28,7 +28,7 @@ namespace Assets.Scripts
 
             _currentBuilding = cell.building.GetComponent<Building>();
 
-            if (_currentBuilding.buildingLvl == 2)
+            if (_currentBuilding.buildingLvl == 2 || GameManager.Instance.money < _currentCell.cost)
                 return;
 
             uiOpen = true;
@@ -39,7 +39,7 @@ namespace Assets.Scripts
                 buildingNameText.text = cell.building.name;
                 costText.text = "Cost: " + cell.cost;
             }
-            else if(_currentBuilding.buildingLvl < 2)
+            else
             {
                 buildingNameText.text = "Lvl 2: " + cell.building.name;
                 costText.text = cell.cost.ToString();
@@ -58,12 +58,18 @@ namespace Assets.Scripts
         {
             if (GameManager.Instance.money >= _currentCell.cost)
             {
-                if (_currentBuilding.isActive && _currentBuilding.buildingLvl < 2)
+                if(_currentBuilding.buildingLvl >= 2)
+                {
+                    HideBuildUI();
+                    return;
+                }
+
+                if (_currentBuilding.isActive)
                 {
                     _currentBuilding.SetBuildingLevel();
                     GameManager.Instance.RemoveMoney(_currentCell.cost);
                 }
-                else if (_currentBuilding.buildingLvl == 1)
+                else
                 {
                     GameManager.Instance.RemoveMoney(_currentCell.cost);
                     _currentCell.building.SetData(1, true);

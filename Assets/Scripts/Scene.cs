@@ -7,6 +7,7 @@ namespace Assets.Scripts
     public class Scene : MonoBehaviour
     {
         public GameObject setings;
+        public GameObject buttons;
         public void NewGame()
         {
             SaveSystem.DeleteSave();
@@ -27,11 +28,13 @@ namespace Assets.Scripts
         public void EnableSettings()
         {
             setings.SetActive(true);
+            buttons.SetActive(false);
         }
 
         public void ReturnToMenu()
         {
             setings.SetActive(false);
+            buttons.SetActive(true);
         }
         public void Quit()
         {

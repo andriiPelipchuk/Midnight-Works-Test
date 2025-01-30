@@ -15,6 +15,11 @@ namespace Assets.Scripts
         {
             building = GetComponentInChildren<Building>(true);
             particleSys = GetComponentInChildren<ParticleSystem>();
+
+            if (building.isActive && building.buildingLvl == 1)
+            {
+                cost *= 2;
+            }
         }
 
         private void Update()
