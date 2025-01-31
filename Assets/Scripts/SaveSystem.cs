@@ -7,7 +7,7 @@ namespace Assets.Scripts
     public static class SaveSystem
     {
 
-        private static string _savePath = "save.json";
+        private static string _savePath = Application.persistentDataPath+"/save.json";
 
         public static void SaveData(SaveData data)
         {

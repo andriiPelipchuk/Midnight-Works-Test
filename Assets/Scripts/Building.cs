@@ -20,6 +20,10 @@ namespace Assets.Scripts
                 isActive = true;
             }
         }
+        private void OnDisable()
+        {
+            ActiveBuildings.Remove(this);
+        }
 
         public void SetData(int lvl, bool isActive)
         {

@@ -128,7 +128,7 @@ namespace Assets.Scripts
         }
         private Waypoint FindClosestWaypointToTarget(Transform targetPosition)
         {
-            Waypoint[] waypoints = FindObjectsOfType<Waypoint>();
+            Waypoint[] waypoints = FindObjectsByType<Waypoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             Waypoint closestWaypoint = null;
             float closestDistance = Mathf.Infinity;
 
@@ -154,6 +154,7 @@ namespace Assets.Scripts
             }
 
             yield return new WaitForSeconds(_currentWaypoint.stopDuration);
+            
             ChooseNextWaypoint();
         }
 
